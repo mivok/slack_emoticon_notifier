@@ -17,6 +17,8 @@ Next, you'll want to deploy the bot on heroku:
 
     heroku create my_emoticon_bot
     heroku addons:create heroku-redis:hobby-dev
+    heroku config:set SLACK_TOKEN=token_from_slack
+    heroku config:set SLACK_ROOM=#room_to_post_to
     git push heroku master
     heroku addons:create scheduler:standard
     heroku addons:open scheduler
