@@ -22,4 +22,4 @@ Next, you'll want to deploy the bot on heroku:
     git push heroku master
     heroku addons:create scheduler:standard
     heroku addons:open scheduler
-    # Add a new job daily to run 'worker'
+    # Add a new job daily to run 'worker' task or 'ruby list.rb'
