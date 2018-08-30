@@ -35,7 +35,7 @@ else
     Slack.chat_postMessage(
       channel: slack_room,
       text: message.join(". "),
-      username: 'Emoticon bot'
+      username: ENV['BOT_NAME'] || 'Emoticon bot'
     )
   end
 end
