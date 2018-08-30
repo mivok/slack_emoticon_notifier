@@ -6,10 +6,11 @@ require 'json'
 redis = Redis.new(:url => ENV['REDIS_URL'])
 
 Slack.configure do |config|
-  config.token = "CHANGEME"
+  config.token = ENV['SLACK_TOKEN']
+  raise "Ensure ENV['SLACK_TOKEN'] is set" unless config.token
 end
 
-slack_room = '#CHANGEME'
+slack_room = ENV['SLACK_ROOM'] || '#general'
 
 old_emoticons = JSON.load(redis.get('emoticon_list'))
 
@@ -34,7 +35,7 @@ else
     Slack.chat_postMessage(
       channel: slack_room,
       text: message.join(". "),
-      username: 'Emoticon bot'
+      username: ENV['BOT_NAME'] || 'Emoticon bot'
     )
   end
 end
